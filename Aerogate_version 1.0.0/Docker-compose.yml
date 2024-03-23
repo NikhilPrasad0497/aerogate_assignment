@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  aerogate:
+    container_name: aerogate
+    image: nginx-loadbalancer:latest
+    ports:
+      - 8080:80
+
+
+  container1:
+    container_name: app-server1
+    image: nginx:latest
+    labels:
+      - env="prod-main"
+    
+  container2:
+    container_name: app-server2
+    image: nginx:latest
+    labels:
+      - env="prod-main"
+    
+  container3:
+    container_name: app-server3
+    image: nginx:latest
+    labels:
+      - env="prod-canary"
+
+  container4:
+    container_name: app-server4
+    image: nginx:latest
+    labels:
+      - env="prod-canary"
+
